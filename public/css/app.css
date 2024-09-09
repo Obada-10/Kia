@@ -1,20 +1,24 @@
-body {
+body, html {
     font-family: "Roboto", Sans-serif;
     margin: 0;
     padding: 0;
+    height:100%;
+    width:100%;
 }
 
 header {
-    background-color: #333;
     font-weight: 500;
     font-size: 18px;
     color: white;
-    padding: 10px 20px;
+    padding-top: 10px;
     display: flex;
     align-items: center;
     justify-content: space-around;
-    visibility: visible !important;
-    opacity: 1 !important;
+    position: absolute; 
+    top: 0; 
+    width: 100%; 
+    z-index: 10; 
+    opacity: 1; 
 }
 
 .logo a{
@@ -44,13 +48,12 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    background-color: #555;
+    background-color: #05141F;
     border-radius: 5px;
 }
 
 main section {
-    padding: 20px;
-    margin: 10px 0;
+    margin: 0;
 }
 
 footer {
@@ -62,7 +65,7 @@ footer {
 .footer-container {
     display: flex;
     justify-content: space-between;
-    max-width: 1250px;
+    max-width: 1280px;
     margin: 0 auto;
     padding: 0 20px;
 }
@@ -102,4 +105,83 @@ footer {
 .footer-block i{
     font-size: 20px;
     padding-right: 120px;
+}
+/* Fullscreen slider styling */
+.swiper-container {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.swiper-slide {
+    position: relative;
+}
+
+.swiper-slide img {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+}
+
+.content-overlay {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 80%;
+    opacity: 0;
+    transform: translate(-50%, 100px);
+    animation: slideUp 1s ease-out forwards;
+}
+
+@keyframes slideUp {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, 100px); 
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+
+
+.content-overlay h3 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.content-overlay p {
+    font-size: 1.2em;
+    margin-bottom: 35px;
+}
+
+.content-overlay .btn {
+    padding: 10px 20px;
+    background-color: white;
+    color: black;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.swiper-button-next, .swiper-button-prev {
+    color: white !important;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+.swiper-button-next {
+    right: 10px;
+}
+
+.swiper-button-prev {
+    left: 10px;
 }
