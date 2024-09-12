@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
      <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
     <header>
@@ -65,7 +66,15 @@
                 prevEl: '.swiper-button-prev',
             },
         });
+        document.querySelectorAll('.delete-button').forEach(button => {
+    button.addEventListener('click', function(e) {
+        if (!confirm('Weet je zeker dat je deze auto wilt verwijderen?')) {
+            e.preventDefault();
+        }
+    });
+});
     </script>
+    
     
 </body>
 </html>

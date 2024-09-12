@@ -4,23 +4,18 @@
 <section class="car-slider">
     <div class="swiper-container">
         <div class="swiper-wrapper">
-            <div class="swiper-slide">
-                <img src="{{ asset('img/car2.jpg') }}" alt="Auto Model 1">
-                <div class="content-overlay">
-                    <h3>Model 1</h3>
-                    <p>Beschrijving van Model 1. Een luxe auto met alle nieuwste functies.</p>
-                    <a href="#" class="btn">Meer Info</a>
+            @foreach($cars as $car)
+                <div class="swiper-slide">
+                    <!-- Image uit de database -->
+                    <img src="{{ asset('storage/' . $car->image) }}" alt="{{ $car->title }}">
+                    <div class="content-overlay">
+                        <!-- Dynamische titel en beschrijving -->
+                        <h3>{{ $car->title }}</h3>
+                        <p>{{ $car->naam }} - {{ $car->brandstofverbruik }} l/100 km, {{ $car->co2 }} g/km</p>
+                        <a href="#" class="btn">Proefritaanvraag</a>
+                    </div>
                 </div>
-            </div>
-            <div class="swiper-slide">
-                <img src="{{ asset('img/car1.jpg') }}" alt="Auto Model 1">
-                <div class="content-overlay">
-                    <h3>Model 2</h3>
-                    <p>Beschrijving van Model 1. Een luxe auto met alle nieuwste functies.</p>
-                    <a href="#" class="btn">Meer Info</a>
-                </div>
-            </div>
-            <!-- Voeg hier meer slides toe -->
+            @endforeach
         </div>
         <!-- Navigatiepijlen -->
         <div class="swiper-button-next"></div>
@@ -31,29 +26,19 @@
     <h2 class="logo-modellen">KN</h2>
     <h2 class="section-title">Modellen:</h2>
     <div class="car-models-container">
-        <!-- Auto Model 1 -->
-        <div class="car-model">
-            <img src="{{ asset('img/car2.jpg') }}" alt="Auto Model 1" class="car-img">
-            <h2 class="car-model-title">Model 1</h2>
-            <p><strong>Brandstofverbruik:</strong> 5.6 l/100 km</p>
-            <p><strong>CO2-uitstoot:</strong> 130 g/km</p>
-            <a href="#" class="test-drive-button">Proefritaanvraag</a>
-        </div>
-        <!-- Auto Model 2 -->
-        <div class="car-model">
-            <img src="{{ asset('img/car1.jpg') }}" alt="Auto Model 2" class="car-img">
-            <h2 class="car-model-title">Model 2</h2>
-            <p><strong>Brandstofverbruik:</strong> 4.8 l/100 km</p>
-            <p><strong>CO2-uitstoot:</strong> 115 g/km</p>
-            <a href="#" class="test-drive-button">Proefritaanvraag</a>
-        </div>
-        <!-- Auto Model 3 -->
-        <div class="car-model">
-            <img src="{{ asset('img/car2.jpg') }}" alt="Auto Model 3" class="car-img">
-            <h2 class="car-model-title">Model 3</h2>
-            <p><strong>Brandstofverbruik:</strong> 6.0 l/100 km</p>
-            <p><strong>CO2-uitstoot:</strong> 140 g/km</p>
-            <a href="#" class="test-drive-button">Proefritaanvraag</a>
+        <div class="car-models-container">
+            @foreach($cars as $car)
+            <!-- Auto Model -->
+            <div class="car-model">
+                <img src="{{ asset('storage/' . $car->image) }}" alt="{{ $car->title }}" class="car-img">
+                <h2 class="car-model-title">{{ $car->title }}</h2>
+                <p><strong>Naam:</strong> {{ $car->naam }}</p>
+                <p><strong>Brandstofverbruik:</strong> {{ $car->brandstofverbruik }} l/100 km</p>
+                <p><strong>CO2-uitstoot:</strong> {{ $car->co2 }} g/km</p>
+                <p><strong>Prijs:</strong> €{{ number_format($car->prijs, 0, ',') }}</p>
+                <a href="#" class="test-drive-button">Proefritaanvraag</a>
+            </div>
+            @endforeach
         </div>
     </div>
 </section>
