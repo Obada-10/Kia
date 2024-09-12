@@ -15,7 +15,7 @@
         </div>
         <nav>
             <ul>
-                <li><a href="#">Modellen</a></li>
+                <li><a href="/modellen">Modellen</a></li>
                 <li><a href="#">Occassions</a></li>
                 <li><a href="#">Zakelijk</a></li>
                 <li><a href="#">Service</a></li>
